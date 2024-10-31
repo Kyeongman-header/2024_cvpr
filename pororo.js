@@ -23,9 +23,11 @@ function loadImages() {
 }
 
 function nextImage() {
-    currentIndex += 1;
-    document.getElementById("imageIndex").value = currentIndex;
-    loadImages();
+    if (currentIndex < 1000) {  // 1000 이하일 때만 다음 이미지로 이동
+        currentIndex += 1;
+        document.getElementById("imageIndex").value = currentIndex;
+        loadImages();
+    }
 }
 
 function prevImage() {
@@ -36,14 +38,9 @@ function prevImage() {
 
 function updateButtons() {
     document.getElementById("prevButton").disabled = currentIndex <= 0;
-    document.getElementById("nextButton").disabled = !imageExists(`pororo_output/${String(currentIndex + 1).padStart(4, '0')}.png`);
+    document.getElementById("nextButton").disabled = currentIndex >= 1000; // 1000을 넘으면 비활성화
 }
 
-function imageExists(url) {
-    const img = new Image();
-    img.src = url;
-    return img.complete && img.naturalHeight !== 0;
-}
 
 // 첫 로드 시 이미지 표시
 window.onload = loadImages;
