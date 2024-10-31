@@ -12,7 +12,7 @@ function loadImages() {
 
     // Pororo 매칭 규칙 적용
     const sourceFileName = `${Math.floor(currentIndex / 4)}_${currentIndex % 4}.png`;
-    const outputFileName = `${currentIndex}.png`;
+    const outputFileName = `${String(currentIndex).padStart(4, '0')}.png`;
 
     // 이미지 요소 가져오기
     document.getElementById("sourceImage").src = `${sourceFolder}${sourceFileName}`;
@@ -36,7 +36,7 @@ function prevImage() {
 
 function updateButtons() {
     document.getElementById("prevButton").disabled = currentIndex <= 0;
-    document.getElementById("nextButton").disabled = !imageExists(`${currentIndex + 1}.png`);
+    document.getElementById("nextButton").disabled = !imageExists(`${String(currentIndex).padStart(4, '0')}.png`);
 }
 
 function imageExists(url) {
