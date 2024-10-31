@@ -36,7 +36,7 @@ function prevImage() {
 
 function updateButtons() {
     document.getElementById("prevButton").disabled = currentIndex <= 0;
-    document.getElementById("nextButton").disabled = !imageExists(`${String(currentIndex).padStart(4, '0')}.png`);
+    document.getElementById("nextButton").disabled = !imageExists(`flintstones_output/${String(currentIndex).padStart(4, '0')}.png`);
 }
 
 function imageExists(url) {
