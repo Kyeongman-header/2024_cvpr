@@ -1,5 +1,20 @@
 // 초기 이미지 번호 설정
 let currentIndex = 0;
+let captionLists = [];
+
+// CSV 파일에서 캡션 로드
+function loadCaptions() {
+    fetch("all_captions_test.json")
+        .then(response => response.json())
+        .then(data => {
+            for (let i = 0; i < Object.keys(data).length; i++) {
+                data[i].forEach(caption => {
+                    captionLists.push(caption);
+                });
+            }
+            loadImages(); // 첫 이미지를 로드
+        });
+}
 
 function loadImages() {
     // 이미지 번호 읽기
@@ -18,6 +33,9 @@ function loadImages() {
     document.getElementById("sourceImage").src = `${sourceFolder}${sourceFileName}`;
     document.getElementById("generatedImage").src = `${outputFolder}${outputFileName}`;
 
+    const captionText = captionLists[currentIndex] || "No caption available";
+    document.getElementById("captionDisplay").innerText = captionText;
+    
     // 이전/다음 버튼 활성화 상태 업데이트
     updateButtons();
 }
@@ -44,7 +62,7 @@ function updateButtons() {
 
 // 첫 로드 시 이미지 표시
 window.onload = () => {
-    loadImages();
+    loadCaptions();
     document.getElementById("imageIndex").addEventListener("keypress", function(event) {
         if (event.key === "Enter") {  // Enter 키 확인
             loadImages();

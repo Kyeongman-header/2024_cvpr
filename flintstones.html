@@ -10,6 +10,7 @@
         .image-container div { text-align: center; }
         img { width: 600px; height: auto; }
         .controls { margin-top: 20px; }
+        #captionDisplay { font-size: 24px; font-weight: bold; text-align: center; margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -18,10 +19,13 @@
     <!-- 이미지 번호 입력창 -->
     <div class="controls">
         <label for="imageIndex">Enter image number:</label>
-        <input type="number" id="imageIndex" value="0" min="0">
+        <input type="number" id="imageIndex" value="400" min="0">
         <button onclick="loadImages()">Load</button>
     </div>
     
+    <!-- 캡션 표시 -->
+    <div id="captionDisplay">Loading caption...</div>
+
     <!-- 이미지와 라벨 -->
     <div class="image-container">
         <div>
@@ -32,14 +36,6 @@
             <h3>Generated Image</h3>
             <img id="generatedImage" alt="Generated Image">
         </div>
-    </div>
-
-    <!-- 질문 영역 -->
-    <div class="questions">
-        <p>Question 1: Sample question?</p>
-        <p>Question 2: Sample question?</p>
-        <p>Question 3: Sample question?</p>
-        <p>Question 4: Sample question?</p>
     </div>
 
     <!-- 이전/다음 버튼 -->
