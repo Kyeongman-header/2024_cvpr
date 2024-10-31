@@ -43,4 +43,11 @@ function updateButtons() {
 
 
 // 첫 로드 시 이미지 표시
-window.onload = loadImages;
+window.onload = () => {
+    loadImages();
+    document.getElementById("imageIndex").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {  // Enter 키 확인
+            loadImages();
+        }
+    });
+};
