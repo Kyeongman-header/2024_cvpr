@@ -1,5 +1,5 @@
 // 초기 이미지 번호 설정
-let currentIndex = 400;
+let currentIndex = 0;
 let captionLists = [];
 let evaluationData = []; // 평가 데이터 배열 선언
 
@@ -23,10 +23,15 @@ async function loadEvaluationData() {
     const arrayBuffer = await response.arrayBuffer();
     const workbook = XLSX.read(arrayBuffer, { type: "array" });
     const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-    const jsonData = XLSX.utils.sheet_to_json(worksheet);
+    const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 }).slice(1); // 첫 행 건너뛰기
 
     // 1부터 100까지의 데이터를 evaluationData에 저장
-    evaluationData = jsonData.slice(0, 100); // 1번부터 100번까지의 행만 저장
+    evaluationData = jsonData.slice(0, 100).map(row => ({
+        EB: row[1],
+        SET: row[2],
+        CON_CHAR: row[3],
+        CON_BACK: row[4]
+    }));
 }
 
 // 이미지와 캡션 로드
@@ -46,8 +51,8 @@ function loadImages() {
     const captionText = captionLists[currentIndex] || "No caption available";
     document.getElementById("captionDisplay").innerText = "Caption of image: " + captionText;
     
-    if (currentIndex >= 1 && currentIndex <= 100) {
-        const data = evaluationData[currentIndex - 1];
+    if (currentIndex >= 0 && currentIndex < 100) {
+        const data = evaluationData[currentIndex];
         document.getElementById("question1").innerText = `Question 1: (캡션 - 인물 반영) On a scale from 0 to 1, how accurately does the character’s emotions and behavior in the generated image reflect the emotions and behavior described in the caption? 
             (Pay attention to facial expressions, body language, and actions. And consider whether direct behaviors have been reflected.) -> ${data["EB"]}`;
         document.getElementById("question2").innerText = `Question 2: (캡션 - 배경 반영) On a scale from 0 to 1, how appropriate is the background setting in the generated image compared to what is described in the caption? -> ${data["SET"]}`;
