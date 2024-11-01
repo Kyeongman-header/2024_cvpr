@@ -49,7 +49,7 @@ function loadImages() {
     document.getElementById("generatedImage").src = `${outputFolder}${outputFileName}`;
 
     const captionText = captionLists[currentIndex] || "No caption available";
-    document.getElementById("captionDisplay").innerText = "Caption of image: " + captionText;
+    document.getElementById("captionDisplay").innerText = "Caption : " + captionText;
     
     if (currentIndex >= 0 && currentIndex < 100) {
         const data = evaluationData[currentIndex];

@@ -36,7 +36,7 @@ function loadImages() {
 
     // 캡션 표시
     const captionText = captionLists[currentIndex]?.caption || "No caption available";
-    document.getElementById("captionDisplay").innerText = "Caption of image: " + captionText;
+    document.getElementById("captionDisplay").innerText = "Caption : " + captionText;
 
     // 이전/다음 버튼 활성화 상태 업데이트
     updateButtons();

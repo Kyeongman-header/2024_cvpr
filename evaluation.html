@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Human Evaluation</title>
     <style>
-        /* 배경색 변경 */
+        /* 배경색 설정 */
         body { 
             font-family: Arial, sans-serif; 
             text-align: center; 
@@ -19,32 +19,38 @@
             margin-bottom: 20px;
         }
 
-        /* 하이퍼링크 박스 스타일 */
-        .link-box {
+        /* 링크를 포함하는 화이트 박스 스타일 */
+        .link-container {
             display: inline-block;
-            padding: 15px 30px;
             background-color: #ffffff;
             border: 2px solid #333;
             border-radius: 8px;
+            padding: 20px;
+        }
+
+        /* 하이퍼링크 스타일 */
+        .link-box {
+            display: block;
             font-size: 1.2em; /* 글씨 크기 키우기 */
             font-family: 'Georgia', serif; /* 글씨체 변경 */
             text-decoration: none;
-            color: #333;
-            margin-top: 20px;
-            transition: background-color 0.3s, color 0.3s; /* 호버 효과 추가 */
+            color: #0000ff; /* 기본 파란색 */
+            margin: 10px 0;
+            transition: font-weight 0.3s; /* 호버 시 글자 굵기 전환 */
         }
 
         .link-box:hover {
-            background-color: #f0f0f0;
-            color: #0000ff;
+            font-weight: bold; /* 호버 시 글자 굵게 */
         }
     </style>
 </head>
 <body>
     <h1>Datasets</h1>
     
-    <!-- 하이퍼링크 박스 -->
-    <a href="pororo.html" class="link-box">Pororo</a>
-    <a href="flintstones.html" class="link-box">Flintstones</a>
+    <!-- 링크를 포함하는 화이트 박스 -->
+    <div class="link-container">
+        <a href="pororo.html" class="link-box">Pororo</a>
+        <a href="flintstones.html" class="link-box">Flintstones</a>
+    </div>
 </body>
 </html>
