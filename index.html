@@ -5,13 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My GitHub Page</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-        a { color: blue; text-decoration: none; }
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; background-color: #f0ffe0; /* 연한 연두색 */}
+
+        /* Abstract 스타일 */
+        .abstract {
+            font-size: 1.5em; /* 글씨 크기 키우기 */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* 하이퍼링크 박스 스타일 */
+        .link-box {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #ffffff;
+            border: 2px solid #333;
+            border-radius: 8px;
+            font-size: 1.2em; /* 글씨 크기 키우기 */
+            font-family: 'Georgia', serif; /* 글씨체 변경 */
+            text-decoration: none;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .link-box:hover {
+            background-color: #f0f0f0;
+            color: #0000ff;
+        }
     </style>
 </head>
 <body>
     <h1>Automating Visual Storytelling Evaluation with Large Vision Language Models and Diffusion Models</h1>
-    <p>Abstract</p>
-    <a href="evaluation.html">Human Evaluation</a>
+    
+    <!-- Abstract 부분 -->
+    <p class="abstract">Abstract</p>
+    
+    <!-- 하이퍼링크 박스 -->
+    <a href="evaluation.html" class="link-box">Human Evaluation</a>
 </body>
 </html>

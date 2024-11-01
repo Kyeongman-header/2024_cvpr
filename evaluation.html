@@ -5,13 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Human Evaluation</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-        a { color: blue; text-decoration: none; display: block; margin: 20px; }
+        /* 배경색 변경 */
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin-top: 50px; 
+            background-color: #f0ffe0; /* 연한 연두색 */
+        }
+
+        /* 제목 스타일 */
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        /* 하이퍼링크 박스 스타일 */
+        .link-box {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #ffffff;
+            border: 2px solid #333;
+            border-radius: 8px;
+            font-size: 1.2em; /* 글씨 크기 키우기 */
+            font-family: 'Georgia', serif; /* 글씨체 변경 */
+            text-decoration: none;
+            color: #333;
+            margin-top: 20px;
+            transition: background-color 0.3s, color 0.3s; /* 호버 효과 추가 */
+        }
+
+        .link-box:hover {
+            background-color: #f0f0f0;
+            color: #0000ff;
+        }
     </style>
 </head>
 <body>
     <h1>Datasets</h1>
-    <a href="pororo.html">Pororo</a>
-    <a href="flintstones.html">Flintstones</a>
+    
+    <!-- 하이퍼링크 박스 -->
+    <a href="pororo.html" class="link-box">Pororo</a>
+    <a href="flintstones.html" class="link-box">Flintstones</a>
 </body>
 </html>
