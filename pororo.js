@@ -50,26 +50,36 @@ function loadImages() {
 
     const captionText = captionLists[currentIndex] || "No caption available";
     document.getElementById("captionDisplay").innerText = "Caption : " + captionText;
-    
+
+    // 현재 index가 100 미만일 때만 평가 데이터를 보여주고, 그렇지 않으면 기본 텍스트를 표시
     if (currentIndex >= 0 && currentIndex < 100) {
         const data = evaluationData[currentIndex];
-        document.getElementById("question1").innerText = `Question 1: (캡션 - 인물 반영) On a scale from 0 to 1, how accurately does the character’s emotions and behavior in the generated image reflect the emotions and behavior described in the caption? 
+        document.getElementById("question1").innerText = `<strong style="font-size: 1.2em;">Question 1: (캡션 - 인물 반영)</strong> On a scale from 0 to 1, how accurately does the character’s emotions and behavior in the generated image reflect the emotions and behavior described in the caption? 
             (Pay attention to facial expressions, body language, and actions. And consider whether direct behaviors have been reflected.) 
             -> ${data["EB"]}`;
-        document.getElementById("question2").innerText = `Question 2: (캡션 - 배경 반영) On a scale from 0 to 1, how appropriate is the background setting in the generated image compared to what is described in the caption? 
+        document.getElementById("question2").innerText = `<strong style="font-size: 1.2em;">Question 2: (캡션 - 배경 반영)</strong> On a scale from 0 to 1, how appropriate is the background setting in the generated image compared to what is described in the caption? 
         -> ${data["SET"]}`;
-        document.getElementById("question3").innerText = `Question 3: (소스 이미지 - 인물 일관성) On a scale from 0 to 1, how well does the appearance of the character in the generated image match the appearance of the same character in the source image? 
+        document.getElementById("question3").innerText = `<strong style="font-size: 1.2em;">Question 3: (소스 이미지 - 인물 일관성)</strong> On a scale from 0 to 1, how well does the appearance of the character in the generated image match the appearance of the same character in the source image? 
             (Consider factors like clothing, facial features, and overall design. If the character doesn't match, consider styles of drawings. 
             Pay attention to facial expressions, body language, and actions.) 
             -> ${data["CON_CHAR"]}`;
-        document.getElementById("question4").innerText = `Question 4: (소스 이미지 - 배경 일관성) On a scale from 0 to 1, how well does the background in the generated image maintain consistent artistic style compared to the source image? 
+        document.getElementById("question4").innerText = `<strong style="font-size: 1.2em;">Question 4: (소스 이미지 - 배경 일관성)</strong> On a scale from 0 to 1, how well does the background in the generated image maintain consistent artistic style compared to the source image? 
             (Consider the level of detail, color schemes, and any recurring elements.) 
             -> ${data["CON_BACK"]}`;
+    } else {
+        // 기본 텍스트로 초기화
+        document.getElementById("question1").innerText = `strong style="font-size: 1.2em;">Question 1: (캡션 - 인물 반영)</strong> On a scale from 0 to 1, how accurately does the character’s emotions and behavior in the generated image reflect the emotions and behavior described in the caption? 
+            (Pay attention to facial expressions, body language, and actions. And consider whether direct behaviors have been reflected.)`;
+        document.getElementById("question2").innerText = `<strong style="font-size: 1.2em;">Question 2: (캡션 - 배경 반영)</strong> On a scale from 0 to 1, how appropriate is the background setting in the generated image compared to what is described in the caption?`;
+        document.getElementById("question3").innerText = `<strong style="font-size: 1.2em;">Question 3: (소스 이미지 - 인물 일관성)</strong> On a scale from 0 to 1, how well does the appearance of the character in the generated image match the appearance of the same character in the source image? 
+            (Consider factors like clothing, facial features, and overall design. If the character doesn't match, consider styles of drawings. 
+            Pay attention to facial expressions, body language, and actions.)`;
+        document.getElementById("question4").innerText = `<strong style="font-size: 1.2em;">Question 4: (소스 이미지 - 배경 일관성)</strong> On a scale from 0 to 1, how well does the background in the generated image maintain consistent artistic style compared to the source image? 
+            (Consider the level of detail, color schemes, and any recurring elements.)`;
     }
 
     updateButtons();
 }
-
 function nextImage() {
     if (currentIndex < captionLists.length - 1) {
         currentIndex += 1;
