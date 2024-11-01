@@ -1,5 +1,5 @@
 // 초기 이미지 번호 설정
-let currentIndex = 400;
+let currentIndex = 0;
 let captionLists = [];
 
 // CSV 파일에서 캡션 로드
