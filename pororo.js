@@ -24,6 +24,7 @@ async function loadEvaluationData() {
 
     // 1부터 100까지의 데이터를 evaluationData에 저장
     evaluationData = jsonData.slice(0, 100); // 1번부터 100번까지의 행만 저장
+    loadCaptions()
 }
 
 
@@ -81,8 +82,8 @@ function updateButtons() {
 }
 
 window.onload = () => {
-    loadCaptions();
     loadEvaluationData();
+    
     document.getElementById("imageIndex").addEventListener("keypress", function(event) {
         if (event.key === "Enter") {
             loadImages();
