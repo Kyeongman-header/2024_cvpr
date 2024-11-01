@@ -1,6 +1,7 @@
 // 초기 이미지 번호 설정
 let currentIndex = 400;
 let captionLists = [];
+let evaluationData = []; // 평가 데이터 배열 선언
 
 // JSON 파일에서 캡션 로드
 function loadCaptions() {
@@ -15,6 +16,8 @@ function loadCaptions() {
             loadImages(); // 첫 이미지를 로드
         });
 }
+
+// 엑셀 파일에서 평가 데이터 로드
 async function loadEvaluationData() {
     const response = await fetch("PORORO_human_eval.xlsx");
     const arrayBuffer = await response.arrayBuffer();
@@ -24,9 +27,7 @@ async function loadEvaluationData() {
 
     // 1부터 100까지의 데이터를 evaluationData에 저장
     evaluationData = jsonData.slice(0, 100); // 1번부터 100번까지의 행만 저장
-    loadCaptions()
 }
-
 
 // 이미지와 캡션 로드
 function loadImages() {
@@ -81,9 +82,12 @@ function updateButtons() {
     document.getElementById("nextButton").disabled = currentIndex >= captionLists.length - 1;
 }
 
+// 첫 로드 시 엑셀 데이터와 캡션을 로드하고 이벤트 리스너를 추가
 window.onload = () => {
-    loadEvaluationData();
-    
+    loadEvaluationData().then(() => {
+        loadCaptions();
+    });
+
     document.getElementById("imageIndex").addEventListener("keypress", function(event) {
         if (event.key === "Enter") {
             loadImages();
