@@ -68,7 +68,7 @@ function loadImages() {
             -> ${data["CON_BACK"]}`;
     } else {
         // 기본 텍스트로 초기화
-        document.getElementById("question1").innerText = `strong style="font-size: 1.2em;">Question 1: (캡션 - 인물 반영)</strong> On a scale from 0 to 1, how accurately does the character’s emotions and behavior in the generated image reflect the emotions and behavior described in the caption? 
+        document.getElementById("question1").innerText = `<strong style="font-size: 1.2em;">Question 1: (캡션 - 인물 반영)</strong> On a scale from 0 to 1, how accurately does the character’s emotions and behavior in the generated image reflect the emotions and behavior described in the caption? 
             (Pay attention to facial expressions, body language, and actions. And consider whether direct behaviors have been reflected.)`;
         document.getElementById("question2").innerText = `<strong style="font-size: 1.2em;">Question 2: (캡션 - 배경 반영)</strong> On a scale from 0 to 1, how appropriate is the background setting in the generated image compared to what is described in the caption?`;
         document.getElementById("question3").innerText = `<strong style="font-size: 1.2em;">Question 3: (소스 이미지 - 인물 일관성)</strong> On a scale from 0 to 1, how well does the appearance of the character in the generated image match the appearance of the same character in the source image? 
